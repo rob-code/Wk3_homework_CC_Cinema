@@ -22,22 +22,22 @@ class Ticket
     SqlRunner.run(sql)
   end
 
-  def self.return_by_id(return_id)
-    sql = 
-  end
+  # def self.return_by_id(return_id)
+  #   sql = 
+  # end
 
-  def self.all
-    sql = 
-  end
+  # def self.all
+  #   sql = 
+  # end
 
 
-  def delete()
-    sql = 
-  end
+  # def delete()
+  #   sql = 
+  # end
 
-  def self.delete_all()
-    sql = 
-  end
+  # def self.delete_all()
+  #   sql = 
+  # end
 
 
 
