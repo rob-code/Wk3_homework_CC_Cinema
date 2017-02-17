@@ -22,9 +22,10 @@ class Ticket
     SqlRunner.run(sql)
   end
 
-  # def self.return_by_id(return_id)
-  #   sql = 
-  # end
+  def self.return_by_id(return_id)
+     sql = "SELECT * FROM tickets WHERE id = #{id_required};"
+     SqlRunner.run(sql)
+  end
 
   def self.all
   sql = "SELECT * FROM tickets"
