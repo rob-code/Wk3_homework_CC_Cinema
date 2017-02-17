@@ -6,14 +6,14 @@ DROP TABLE customers;
 CREATE TABLE customers (
 id SERIAL4 primary key,
 name VARCHAR(255),
-funds REAL
+funds NUMERIC(6,2)
 );
 
 
 CREATE TABLE films (
 id SERIAL4 primary key,
 title VARCHAR(255),
-price REAL
+price NUMERIC(6,2)
 );
 
 CREATE TABLE tickets(

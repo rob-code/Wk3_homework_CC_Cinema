@@ -12,13 +12,13 @@ class Ticket
   end
 
   def save()
-    sql = "INSERT INTO customers (customer_id, film_id) VALUES (#{@customer_id}, #{@film_id}) RETURNING id;"
+    sql = "INSERT INTO tickets (customer_id, film_id) VALUES (#{@customer_id}, #{@film_id}) RETURNING id;"
     ticket = SqlRunner.run(sql).first
     @id = ticket['id'].to_i
   end
 
   def update()
-    sql = "UDDATE tickets (customer_id, film_id) SET (#{@customer_id}, #{film_id})"
+    sql = "UPDATE tickets (customer_id, film_id) SET (#{@customer_id}, #{film_id})"
     SqlRunner.run(sql)
   end
 
