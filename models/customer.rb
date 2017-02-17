@@ -29,11 +29,23 @@ class Customer
     return Film.get_many(sql)
   end
 
-  def save()
-    sql = "INSERT INTO customers (name, funds) VALUES ('#{@name}', #{@funds}) RETURNING id;"
-    customer = SqlRunner.run(sql).first
-    @id = customer['id'].to_i
-  end
+  def tickets()
+    sql = "SELECT films.*
+    FROM films INNER JOIN tickets
+    ON tickets.film_id = films.id
+    WHERE customer_id = #{@id}"
+    films = SqlRunner.run(sql)
+    puts "#{@name} has bought #{films.count} ticket(s):"
+    films.map do |film|
+     puts "#{film['title']} costing £#{film['price']}"
+   end
+ end
+
+ def save()
+  sql = "INSERT INTO customers (name, funds) VALUES ('#{@name}', #{@funds}) RETURNING id;"
+  customer = SqlRunner.run(sql).first
+  @id = customer['id'].to_i
+end
 
   def update()
     sql = "UPDATE customers SET (name, funds) = ('#{@name}', #{@funds}) WHERE id = #{@id}"
