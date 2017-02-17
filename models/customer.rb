@@ -26,20 +26,27 @@ class Customer
   #   sql = 
   # end
 
-  # def self.all
-  #   sql = 
-  # end
+  def self.all
+  sql = "SELECT * FROM customers"
+  return self.get_many(sql)
+  end
 
 
   # def delete()
   #   sql = 
   # end
 
-  # def self.delete_all()
-  #   sql = 
-  # end
+  def self.delete_all()
+    sql = "DELETE FROM customers"
+    SqlRunner.run(sql)
+  end
 
 
+  def self.get_many(sql)
+    customers = SqlRunner.run(sql)
+    result = customers.map {|customer| Customer.new(customer)}
+    return result
+  end
 
 
 

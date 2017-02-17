@@ -26,18 +26,26 @@ class Film
   #   sql = 
   # end
 
-  # def self.all
-  #   sql = 
-  # end
+  def self.all
+  sql = "SELECT * FROM films"
+  return self.get_many(sql)
+  end
 
 
   # def delete()
   #   sql = 
   # end
 
-  # def self.delete_all()
-  #   sql = 
-  # end
+  def self.delete_all()
+    sql = "DELETE FROM films"
+    SqlRunner.run(sql)
+  end
 
+
+  def self.get_many(sql)
+    films = SqlRunner.run(sql)
+    result = films.map {|film| Film.new(film)}
+    return result
+  end
 
 end
