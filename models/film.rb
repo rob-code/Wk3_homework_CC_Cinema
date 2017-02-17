@@ -12,19 +12,13 @@ class Film
   end
 
 
-def customers()
-sql = "SELECT customers.* 
-       FROM customers INNER JOIN tickets
-       ON tickets.customer_id = customers.id
-       WHERE film_id = #{@id};"
-return Customer.get_many(sql)
-end
-
-
-
-
-
-
+  def customers()
+    sql = "SELECT customers.* 
+    FROM customers INNER JOIN tickets
+    ON tickets.customer_id = customers.id
+    WHERE film_id = #{@id};"
+    return Customer.get_many(sql)
+  end
 
   def save()
     sql = "INSERT INTO films (title, price) VALUES ('#{@title}', #{@price}) RETURNING id;"
@@ -38,30 +32,30 @@ end
   end
 
   def self.return_by_id(return_id)
-     sql = "SELECT * FROM films WHERE id = #{id_required};"
-     SqlRunner.run(sql)
-  end
+   sql = "SELECT * FROM films WHERE id = #{id_required};"
+   SqlRunner.run(sql)
+ end
 
-  def self.all
+ def self.all
   sql = "SELECT * FROM films"
   return self.get_many(sql)
-  end
+end
 
-  def self.delete_by_id(id_required)
-    sql = "DELETE FROM films WHERE id = #{id_required};"
-    SqlRunner.run(sql)
-  end
+def self.delete_by_id(id_required)
+  sql = "DELETE FROM films WHERE id = #{id_required};"
+  SqlRunner.run(sql)
+end
 
-  def self.delete_all()
-    sql = "DELETE FROM films"
-    SqlRunner.run(sql)
-  end
+def self.delete_all()
+  sql = "DELETE FROM films"
+  SqlRunner.run(sql)
+end
 
 
-  def self.get_many(sql)
-    films = SqlRunner.run(sql)
-    result = films.map {|film| Film.new(film)}
-    return result
-  end
+def self.get_many(sql)
+  films = SqlRunner.run(sql)
+  result = films.map {|film| Film.new(film)}
+  return result
+end
 
 end
