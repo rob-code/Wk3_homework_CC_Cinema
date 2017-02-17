@@ -27,11 +27,11 @@ class Film
   end
 
   def update()
-    sql = "UDPDATE films (title, price) SET (#{'@title'}, #{@price}) WHERE id = #{@id}"
+    sql = "UDPDATE films SET (title, price) = (#{'@title'}, #{@price}) WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
-  def self.return_by_id(return_id)
+  def self.return_by_id(id_required)
    sql = "SELECT * FROM films WHERE id = #{id_required};"
    SqlRunner.run(sql)
  end

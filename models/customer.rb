@@ -11,7 +11,17 @@ class Customer
     @funds = options['funds'].to_f
   end
 
-  def film()
+  def buy_ticket(id_required)
+    film = Film.return_by_id(id_required).first
+    # got to generate ticket
+    ticket = Ticket.new({'customer_id' =>@id, 'film_id' => id_required})
+    ticket.save()
+    @funds -= film['price'].to_f
+    update()
+  end
+
+
+  def films()
     sql = "SELECT films.*
     FROM films INNER JOIN tickets
     ON tickets.film_id = films.id
@@ -26,7 +36,7 @@ class Customer
   end
 
   def update()
-    sql = "UPDATE customers (name, funds) SET ('#{@name}', #{@funds}) WHERE id = #{@id}"
+    sql = "UPDATE customers SET (name, funds) = ('#{@name}', #{@funds}) WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 

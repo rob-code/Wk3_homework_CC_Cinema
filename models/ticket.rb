@@ -18,7 +18,7 @@ class Ticket
   end
 
   def update()
-    sql = "UPDATE tickets (customer_id, film_id) SET (#{@customer_id}, #{film_id})"
+    sql = "UPDATE tickets SET (customer_id, film_id) = (#{@customer_id}, #{film_id})"
     SqlRunner.run(sql)
   end
 
