@@ -31,10 +31,10 @@ class Film
   return self.get_many(sql)
   end
 
-
-  # def delete()
-  #   sql = 
-  # end
+  def self.delete_by_id(id_required)
+    sql = "DELETE FROM films WHERE id = #{id_required};"
+    SqlRunner.run(sql)
+  end
 
   def self.delete_all()
     sql = "DELETE FROM films"

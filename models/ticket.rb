@@ -32,9 +32,10 @@ class Ticket
   end
 
 
-  # def delete()
-  #   sql = 
-  # end
+  def self.delete_by_id(id_required)
+    sql = "DELETE FROM tickets WHERE id = #{id_required};"
+    SqlRunner.run(sql)
+  end
 
   def self.delete_all()
     sql = "DELETE FROM tickets"
