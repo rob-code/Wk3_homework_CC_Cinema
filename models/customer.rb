@@ -23,7 +23,7 @@ class Customer
   end
 
   def self.return_by_id(return_id)
-     sql = "SELECT FROM customers WHERE id = #{id_required};"
+     sql = "SELECT * FROM customers WHERE id = #{id_required};"
      SqlRunner.run(sql)
   end
 
