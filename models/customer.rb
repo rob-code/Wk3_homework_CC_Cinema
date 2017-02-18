@@ -24,7 +24,7 @@ class Customer
   def films()
     sql = "SELECT films.*
     FROM films INNER JOIN tickets
-    ON tickets.film_id = films.id
+    ON films.id = tickets.film_id
     WHERE customer_id = #{@id}"
     return Film.get_many(sql)
   end
@@ -32,7 +32,7 @@ class Customer
   def tickets()
     sql = "SELECT films.*
     FROM films INNER JOIN tickets
-    ON tickets.film_id = films.id
+    ON films.id = tickets.film_id
     WHERE customer_id = #{@id}"
     films = SqlRunner.run(sql)
     puts "#{@name} has bought #{films.count} ticket(s):"
