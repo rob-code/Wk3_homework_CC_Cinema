@@ -13,7 +13,6 @@ class Customer
 
   def buy_ticket(id_required)
     film = Film.return_by_id(id_required).first
-    # got to generate ticket
     ticket = Ticket.new({'customer_id' =>@id, 'film_id' => id_required})
     ticket.save()
     @funds -= film['price'].to_f
@@ -35,10 +34,12 @@ class Customer
     ON films.id = tickets.film_id
     WHERE customer_id = #{@id}"
     films = SqlRunner.run(sql)
+    puts "\n \n"
     puts "#{@name} has bought #{films.count} ticket(s):"
     films.map do |film|
      puts "#{film['title']} costing £#{film['price']}"
    end
+   puts "\n \n"
  end
 
  def save()
