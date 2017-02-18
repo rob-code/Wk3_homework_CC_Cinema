@@ -11,6 +11,21 @@ class Ticket
     @film_id = options['film_id'].to_i
   end
 
+  def self.income()
+    sql = "SELECT films.* FROM films LEFT JOIN tickets ON films.id = tickets.film_id;"
+    films = SqlRunner.run(sql)
+    puts "\n \n"
+    puts "The cinema has sold a total of #{films.count} tickets:"
+    total_income = 0
+    films.map do |film|
+      puts "#{film['title']} costing £ #{film['price']}"
+      total_income += film['price'].to_f
+    end
+    puts "\nTOTAL INCOME : £ #{sprintf("%.2f", total_income)}"
+    puts ""
+  end
+
+
   def save()
     sql = "INSERT INTO tickets (customer_id, film_id) VALUES (#{@customer_id}, #{@film_id}) RETURNING id;"
     ticket = SqlRunner.run(sql).first

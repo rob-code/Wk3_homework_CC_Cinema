@@ -2,17 +2,17 @@
 
 In addition to the basic requirements, the app is able to do the following:
 
-A customer can buy a ticket with buy_ticket instance method i.e. customer1.buy_ticket(film_id). This generates a ticket and saves it in the ticket table, reduces customers funds by the ticket price and updates the customer's record with the new funds value.
+- A customer can buy a ticket with buy_ticket instance method i.e. customer1.buy_ticket(film_id). This generates a ticket and saves it in the ticket table, reduces customers funds by the ticket price and updates the customer's record with the new funds value.
 
-View the films watched by each customer i.e. customer1.films
+- View the films watched by each customer i.e. customer1.films
 
-View the tickets bought by each customer i.e. customer1.tickets. This is the same query but with clearer output.
+- View the tickets bought by each customer i.e. customer1.tickets. This is the same query but with clearer output.
 
-View the customers who have watched film i.e. film1.customers
+- View the customers who have watched each film i.e. film1.customers
 
-#To Do:
+- Get the total income from all ticket sales using a left join. i.e use class method Ticket.income
 
-How much income is taken in by the cinema: Report tickets sold to customers for films and total up the price of tickets
+
 
 
 
@@ -26,7 +26,7 @@ How much income is taken in by the cinema: Report tickets sold to customers for 
 
 ##Brief - CodeClan Cinema
 
-Create a software that handles bookings for our newly built cinema! 
+Create software that handles bookings for our newly built cinema! 
 It's enough if you can call your methods in pry!
 
 ###Your app should have:
