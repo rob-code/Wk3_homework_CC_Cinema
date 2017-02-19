@@ -12,15 +12,9 @@ In addition to the core requirements, the app is able to do the following extens
 
 - Get the total income from all ticket sales i.e use class method Ticket.income     This uses a query with a left join
 
-got to now 
-- add showtime into 
-customer - OK
-film
-ticket classes
+- Added a new class and table Showtimes so that the tickets table now also references showtime_id. When a customer buys a ticket, the buy_ticket method now requires the film_id and the showtime_id.
 
-
-- change the console
-
+- Calculate the most popular time for a film?
 
 
 

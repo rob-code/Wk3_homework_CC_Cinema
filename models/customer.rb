@@ -11,9 +11,9 @@ class Customer
     @funds = options['funds'].to_f
   end
 
-  def buy_ticket(id_required, showtime_required)
-    film = Film.return_by_id(id_required).first
-    ticket = Ticket.new({'customer_id' =>@id, 'film_id' => id_required, 'showtime_id' => showtime_required})
+  def buy_ticket(film_id_required, showtime_id_required)
+    film = Film.return_by_id(film_id_required).first
+    ticket = Ticket.new({'customer_id' =>@id, 'film_id' =>film_id_required, 'showtime_id' => showtime_id_required})
     ticket.save()
     @funds -= film['price'].to_f
     update()
