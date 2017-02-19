@@ -12,7 +12,7 @@ class Ticket
     @showtime_id = options['showtime_id'].to_i
   end
 
-  def self.mpt() #most_popular_time
+  def self.most_popular_time()
     sql = "SELECT showtimes.showtime, films.title, films.price FROM tickets INNER JOIN showtimes ON showtimes.id = tickets.showtime_id INNER JOIN films ON films.id = tickets.film_id;"
     values_array = SqlRunner.run(sql)
     times = []
@@ -20,19 +20,19 @@ class Ticket
     values_array.map do |each|
       times.push(each['showtime'])
     end
+
     showtimes = times.uniq
     top_time = ""
-    count = 0
-    #get the numberof times each showtime occurs:
+    max_frequency = 0
     puts""
     puts "The number of tickets sold for each screening time:"
     
     showtimes.map do |showtime|
-      if times.count(showtime) > count
-        top_time = showtime
-        count = times.count(showtime)
-      end  
       puts "#{showtime} : No. of tickets = #{times.count(showtime)}"
+      if times.count(showtime) > max_frequency
+        top_time = showtime
+        max_frequency = times.count(showtime)
+      end  
     end
 
     puts ""
@@ -40,12 +40,12 @@ class Ticket
     puts ""
   end
 
-
   def self.income()
     sql = "SELECT films.* FROM films LEFT JOIN tickets ON films.id = tickets.film_id;"
     films = SqlRunner.run(sql)
     puts "\n \n"
     puts "The cinema has sold a total of #{films.count} tickets:"
+    puts""
     total_income = 0
     films.map do |film|
       puts "#{film['title']} costing £ #{film['price']}"
