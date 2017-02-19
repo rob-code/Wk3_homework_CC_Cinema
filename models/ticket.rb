@@ -20,18 +20,24 @@ class Ticket
     values_array.map do |each|
       times.push(each['showtime'])
     end
-
     showtimes = times.uniq
+    top_time = ""
+    count = 0
     #get the numberof times each showtime occurs:
     puts""
-    puts "The number of tickets sold for each showtime:"
+    puts "The number of tickets sold for each screening time:"
+    
     showtimes.map do |showtime|
+      if times.count(showtime) > count
+        top_time = showtime
+        count = times.count(showtime)
+      end  
       puts "#{showtime} : No. of tickets = #{times.count(showtime)}"
     end
-puts ""
-puts "The most popular time for watching films is:"
 
-
+    puts ""
+    puts "The most popular time for watching films is: #{top_time}"
+    puts ""
   end
 
 
@@ -62,31 +68,31 @@ puts "The most popular time for watching films is:"
   end
 
   def self.return_by_id(id_required)
-     sql = "SELECT * FROM tickets WHERE id = #{id_required};"
-     SqlRunner.run(sql)
-  end
+   sql = "SELECT * FROM tickets WHERE id = #{id_required};"
+   SqlRunner.run(sql)
+ end
 
-  def self.all
+ def self.all
   sql = "SELECT * FROM tickets"
   return self.get_many(sql)
-  end
+end
 
 
-  def self.delete_by_id(id_required)
-    sql = "DELETE FROM tickets WHERE id = #{id_required};"
-    SqlRunner.run(sql)
-  end
+def self.delete_by_id(id_required)
+  sql = "DELETE FROM tickets WHERE id = #{id_required};"
+  SqlRunner.run(sql)
+end
 
-  def self.delete_all()
-    sql = "DELETE FROM tickets"
-    SqlRunner.run(sql)
-  end
+def self.delete_all()
+  sql = "DELETE FROM tickets"
+  SqlRunner.run(sql)
+end
 
-  def self.get_many(sql)
-    tickets = SqlRunner.run(sql)
-    result = tickets.map {|ticket| Ticket.new(ticket)}
-    return result
-  end
+def self.get_many(sql)
+  tickets = SqlRunner.run(sql)
+  result = tickets.map {|ticket| Ticket.new(ticket)}
+  return result
+end
 
 
 end

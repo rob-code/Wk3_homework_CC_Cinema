@@ -45,10 +45,10 @@ ticket1.save()
 ticket2 = Ticket.new({'customer_id' =>customer2.id, 'film_id' => film2.id, 'showtime_id' => showtime2.id})
 ticket2.save()
 
-ticket3 = Ticket.new({'customer_id' =>customer3.id, 'film_id' => film1.id, 'showtime_id' => showtime3.id})
+ticket3 = Ticket.new({'customer_id' =>customer3.id, 'film_id' => film1.id, 'showtime_id' => showtime2.id})
 ticket3.save()
 
-ticket4 = Ticket.new({'customer_id' =>customer4.id, 'film_id' => film2.id, 'showtime_id' => showtime3.id})
+ticket4 = Ticket.new({'customer_id' =>customer4.id, 'film_id' => film2.id, 'showtime_id' => showtime2.id})
 ticket4.save()
 
 ticket5 = Ticket.new({'customer_id' =>customer1.id, 'film_id' => film2.id, 'showtime_id' => showtime3.id})
@@ -56,6 +56,12 @@ ticket5.save()
 
 ticket6 = Ticket.new({'customer_id' =>customer2.id, 'film_id' => film1.id, 'showtime_id' => showtime3.id})
 ticket6.save()
+
+ticket7 = Ticket.new({'customer_id' =>customer2.id, 'film_id' => film1.id, 'showtime_id' => showtime3.id})
+ticket7.save()
+
+ticket8 = Ticket.new({'customer_id' =>customer4.id, 'film_id' => film2.id, 'showtime_id' => showtime2.id})
+ticket8.save()
 
 binding.pry
 nil
