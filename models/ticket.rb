@@ -3,12 +3,13 @@ require_relative("../db/sql_runner")
 class Ticket
 
   attr_reader :id
-  attr_accessor :customer_id, :film_id
+  attr_accessor :customer_id, :film_id, :showtime_id
 
   def initialize(options)
     @id = options['id'].to_i
     @customer_id = options['customer_id'].to_i
     @film_id = options['film_id'].to_i
+    @showtime_id = options['showtime_id'].to_i
   end
 
   def self.income()
@@ -27,17 +28,17 @@ class Ticket
 
 
   def save()
-    sql = "INSERT INTO tickets (customer_id, film_id) VALUES (#{@customer_id}, #{@film_id}) RETURNING id;"
+    sql = "INSERT INTO tickets (customer_id, film_id, showtime_id) VALUES (#{@customer_id}, #{@film_id}, #{@showtime_id}) RETURNING id;"
     ticket = SqlRunner.run(sql).first
     @id = ticket['id'].to_i
   end
 
   def update()
-    sql = "UPDATE tickets SET (customer_id, film_id) = (#{@customer_id}, #{film_id})"
+    sql = "UPDATE tickets SET (customer_id, film_id, showtime_id) = (#{@customer_id}, #{film_id}, #{@showtime_id})"
     SqlRunner.run(sql)
   end
 
-  def self.return_by_id(return_id)
+  def self.return_by_id(id_required)
      sql = "SELECT * FROM tickets WHERE id = #{id_required};"
      SqlRunner.run(sql)
   end
@@ -58,20 +59,11 @@ class Ticket
     SqlRunner.run(sql)
   end
 
-
   def self.get_many(sql)
     tickets = SqlRunner.run(sql)
     result = tickets.map {|ticket| Ticket.new(ticket)}
     return result
   end
-
-
-
-
-
-
-
-
 
 
 end

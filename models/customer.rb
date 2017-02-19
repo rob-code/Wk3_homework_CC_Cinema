@@ -11,9 +11,9 @@ class Customer
     @funds = options['funds'].to_f
   end
 
-  def buy_ticket(id_required)
+  def buy_ticket(id_required, showtime_required)
     film = Film.return_by_id(id_required).first
-    ticket = Ticket.new({'customer_id' =>@id, 'film_id' => id_required})
+    ticket = Ticket.new({'customer_id' =>@id, 'film_id' => id_required, 'showtime_id' => showtime_required})
     ticket.save()
     @funds -= film['price'].to_f
     update()
@@ -53,7 +53,7 @@ end
     SqlRunner.run(sql)
   end
 
-  def self.return_by_id(return_id)
+  def self.return_by_id(id_required)
    sql = "SELECT * FROM customers WHERE id = #{id_required};"
    SqlRunner.run(sql)
  end

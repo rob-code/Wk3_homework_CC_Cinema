@@ -1,6 +1,6 @@
 ##Robert B's Cinema Homework 
 
-In addition to the basic requirements, the app is able to do the following:
+In addition to the core requirements, the app is able to do the following extensions:
 
 - A customer can buy a ticket with buy_ticket instance method i.e. customer1.buy_ticket(film_id). This generates a ticket and saves it in the ticket table, reduces customers funds by the ticket price and updates the customer's record with the new funds value.
 
@@ -8,9 +8,18 @@ In addition to the basic requirements, the app is able to do the following:
 
 - View the tickets bought by each customer i.e. customer1.tickets. This is the same query but with clearer output.
 
-- View the customers who have watched each film i.e. film1.customers
+- View the customers who have watched a particular film i.e. film1.customers
 
-- Get the total income from all ticket sales using a left join. i.e use class method Ticket.income
+- Get the total income from all ticket sales i.e use class method Ticket.income     This uses a query with a left join
+
+got to now 
+- add showtime into 
+customer - OK
+film
+ticket classes
+
+
+- change the console
 
 
 
