@@ -16,3 +16,18 @@ In addition to the core requirements, the app is able to do the following extens
 
 
 
+*********
+To do:
+
+At a Screen class and screens table containing number of seats. Add screen as an argument to Films constructor. 
+
+This allows:
+
+The cinema's programme can be built from the film instances
+
+The customers.buy_ticket method can be changed to check, before a ticket is sold, the funds held by the customer and the number of seats available for sale in the screen instance.
+
+
+
+
+
